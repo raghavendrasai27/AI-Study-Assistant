@@ -1,102 +1,64 @@
-# 📚 AI Study Assistant
+# 📚 Alex · AI Study Companion
 
-An AI-powered study assistant built with **Streamlit**, **LangChain**, **FAISS**, **HuggingFace Embeddings**, and **Google Gemini**. Upload one or more PDF notes and interact with them through Q&A with citations, automated study summaries, practice question generation, quizzes with answer keys, and flashcards.
-
----
-
-## 📁 Project Architecture
-
-The codebase is organized into modular components under `src/` to ensure separation of concerns, testability, and clean code:
-
-```
-AI_Study_Assistant/
-├── app.py                      # Application entry point & workflow orchestrator
-├── requirements.txt            # Python dependencies
-├── .env                        # Environment variables (API keys & model config)
-├── .gitignore                  # Git ignore rules
-├── README.md                   # Documentation and usage guide
-└── src/
-    ├── __init__.py             # Package marker
-    ├── config.py               # Constants, chunk limits, and .env validation
-    ├── models.py               # Cached embeddings & Gemini LLM client with error handling
-    ├── document_loader.py      # PDF parsing via PyPDFLoader and metadata attachment
-    ├── text_splitter.py        # RecursiveCharacterTextSplitter chunking
-    ├── vectorstore.py          # FAISS vector store creation & MMR/similarity search
-    ├── prompts.py              # System prompt templates for all 5 study modes
-    └── ui/
-        ├── __init__.py         # UI package marker
-        ├── styles.py           # Page config, custom CSS, header, and footer
-        ├── components.py       # Sidebar, document metrics, and export buttons
-        └── views.py            # Renderers for Q&A, Summaries, Questions, Quiz, and Flashcards
-```
-
-### Module Responsibilities
-
-| Module | Responsibility |
-| :--- | :--- |
-| [`app.py`](app.py) | High-level orchestrator: loads UI, triggers ingestion pipeline, routes views. |
-| [`src/config.py`](src/config.py) | Centralized configuration, chunk sizes, and `.env` loading and verification. |
-| [`src/models.py`](src/models.py) | Cached Hugging Face embedding model and Gemini Chat client with error handling. |
-| [`src/document_loader.py`](src/document_loader.py) | Safely handles temporary files, loads PDFs, and tags source metadata. |
-| [`src/text_splitter.py`](src/text_splitter.py) | Splits documents into chunks with overlap for RAG retrieval. |
-| [`src/vectorstore.py`](src/vectorstore.py) | Builds FAISS index and executes MMR (Maximum Marginal Relevance) search. |
-| [`src/prompts.py`](src/prompts.py) | Standardized, prompt templates for study tasks. |
-| [`src/ui/styles.py`](src/ui/styles.py) | CSS styling, page titles, and layout containers. |
-| [`src/ui/components.py`](src/ui/components.py) | Sidebar controls, document metrics, clear/reset buttons, and export section. |
-| [`src/ui/views.py`](src/ui/views.py) | Interactive views for the 5 study modes. |
+An interactive, AI-powered study partner built with **Streamlit**, **LangChain**, **FAISS**, and **Google Gemini**. Upload course PDFs and study smarter with conversational tutoring, interactive quizzes, flashcards, and revision notes.
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone & Navigate to Project
+## ⚡ Quickstart
 
 ```bash
-cd AI_Study_Assistant
-```
-
-### 2. Set Up Virtual Environment
-
-```bash
-# Create virtual environment
+# 1. Setup virtual environment & install dependencies
 python -m venv .venv
-
-# Activate on Windows
-.venv\Scripts\activate
-
-# Activate on macOS/Linux
-source .venv/bin/activate
-```
-
-### 3. Install Dependencies
-
-```bash
+.venv\Scripts\activate       # On macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-```
 
-### 4. Configure Environment Variables
+# 2. Add your Gemini API key in .env
+# GOOGLE_API_KEY=your_api_key_here
+# GEMINI_MODEL=gemini-3.6-flash
 
-Create a `.env` file in the root directory:
-
-```env
-GOOGLE_API_KEY=your_gemini_api_key_here
-# Optional: specify a Gemini model (defaults to gemini-3.6-flash)
-GEMINI_MODEL=gemini-3.6-flash
-```
-
-### 5. Run the Application
-
-```bash
+# 3. Launch the app
 streamlit run app.py
 ```
 
 ---
 
-## 🎯 Features & Study Modes
+## 🎯 Key Features
 
-1. **💬 Chat & Ask Questions**: Conversational tutoring with Alex, your AI study buddy. Includes quick-start prompt chips, conversation memory, and page-specific citations.
-2. **📝 Revision Summary**: High-yield study summaries (Quick Skim, Balanced Revision, or Comprehensive Guide) with exam tips.
-3. **❓ Practice Questions**: Active recall questions across difficulty levels with revealable answers.
-4. **🧠 Interactive Quiz**: Fully interactive multiple-choice test with answer submission, live scoring, celebration balloons, and explanations.
-5. **🗂️ Flashcard Deck**: Interactive card-by-card deck with progress bar, flip-to-reveal answers, and deck shuffling.
-6. **📥 Export Material**: Download individual study outputs or bundle all generated notes into a complete study package.
+- **💬 Conversational Q&A**: Chat with Alex using your notes with accurate page citations and starter prompts.
+- **📝 Smart Summaries**: Generate high-yield revision sheets (Quick Skim, Balanced, or In-depth).
+- **❓ Practice Questions**: Create customized practice questions with revealable answers and explanations.
+- **🧠 Interactive Quiz**: Multiple-choice self-test with live scoring, answer keys, and celebration effects.
+- **🗂️ Flashcard Deck**: Active recall deck with flip-to-reveal answers, card navigation, and shuffling.
+- **📥 Export Material**: Download all generated notes in a single study file for offline revision.
+
+---
+
+## 🏗️ Project Structure
+
+```
+AI_Study_Assistant/
+├── app.py                  # Streamlit entry point & coordinator
+├── requirements.txt        # Project dependencies
+├── .env                    # API key & model settings
+└── src/
+    ├── config.py           # Configuration & environment validation
+    ├── models.py           # Gemini 3.6 Flash & HuggingFace embeddings
+    ├── document_loader.py  # PDF processing & source metadata
+    ├── text_splitter.py    # Recursive document chunking
+    ├── vectorstore.py      # FAISS vector database & MMR retrieval
+    ├── prompts.py          # Tutor prompt templates
+    └── ui/
+        ├── styles.py       # Custom CSS & layout styling
+        ├── components.py   # Sidebar, metrics, & export controls
+        └── views.py        # Mode views (Chat, Summary, Quiz, Flashcards)
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Streamlit
+- **LLM**: Google Gemini (`gemini-3.6-flash`) via `langchain-google-genai`
+- **Vector Store**: FAISS (`faiss-cpu`) with MMR search
+- **Embeddings**: HuggingFace `all-MiniLM-L6-v2`
+- **PDF Extraction**: `pypdf` & `langchain-community`
