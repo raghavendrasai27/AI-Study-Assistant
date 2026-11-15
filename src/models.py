@@ -1,24 +1,27 @@
-import streamlit as st
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from src.config import GOOGLE_API_KEY, GEMINI_MODEL, EMBEDDING_MODEL
 
+_cached_resources = {}
 
-@st.cache_resource
+
 def get_embeddings():
     """Initializes and caches the local HuggingFace embeddings model."""
-    return HuggingFaceEmbeddings(
-        model_name=EMBEDDING_MODEL
-    )
+    if "embeddings" not in _cached_resources:
+        _cached_resources["embeddings"] = HuggingFaceEmbeddings(
+            model_name=EMBEDDING_MODEL
+        )
+    return _cached_resources["embeddings"]
 
 
-@st.cache_resource
 def get_llm():
     """Initializes and caches the Gemini LLM client."""
-    return ChatGoogleGenerativeAI(
-        model=GEMINI_MODEL,
-        google_api_key=GOOGLE_API_KEY
-    )
+    if "llm" not in _cached_resources:
+        _cached_resources["llm"] = ChatGoogleGenerativeAI(
+            model=GEMINI_MODEL,
+            google_api_key=GOOGLE_API_KEY
+        )
+    return _cached_resources["llm"]
 
 
 def extract_response_text(response) -> str:

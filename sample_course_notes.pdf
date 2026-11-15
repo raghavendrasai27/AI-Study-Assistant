@@ -1,0 +1,110 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R 6 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 7 0 R /Resources << /Font << /F1 11 0 R >> >> >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 11 0 R >> >> >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 9 0 R /Resources << /Font << /F1 11 0 R >> >> >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 11 0 R >> >> >>
+endobj
+7 0 obj
+<< /Length 970 >>
+stream
+BT
+/F1 12 Tf
+50 740 Td
+16 TL
+(Chapter 1: Foundations of Machine Learning and Supervised Learning) '
+(Supervised learning is a paradigm where an algorithm learns a mapping function from input features X to target labels y based on labeled training pairs.) '
+(Key concepts:) '
+(1. Linear Regression: Predicts a continuous scalar value. The hypothesis function is h_theta\(x\) = theta^T * x. It minimizes Mean Squared Error \(MSE\), which represents the average squared difference between estimated values and actual values.) '
+(2. Logistic Regression: Used for binary classification tasks. It applies the Sigmoid \(logistic\) function to linear outputs, mapping real numbers into probabilities between 0 and 1. The decision boundary is typically thresholded at 0.5.) '
+(3. Cost Function: Quantifies how wrong the model is. Binary Cross-Entropy \(log loss\) is preferred for classification because MSE creates non-convex surfaces when combined with sigmoid functions.) '
+ET
+endstream
+endobj
+8 0 obj
+<< /Length 984 >>
+stream
+BT
+/F1 12 Tf
+50 740 Td
+16 TL
+(Chapter 2: Neural Networks and Activation Functions) '
+(Deep learning utilizes multi-layer perceptrons \(MLPs\) consisting of an input layer, one or more hidden layers, and an output layer.) '
+(Key activation functions:) '
+(1. Sigmoid Function: 1 / \(1 + e^-z\). Suffers from vanishing gradients in deep networks because its derivative approaches zero for large positive or negative inputs.) '
+(2. ReLU \(Rectified Linear Unit\): f\(x\) = max\(0, x\). Avoids saturation for positive inputs and enables significantly faster convergence. However, it can suffer from the Dying ReLU problem where neurons become permanently inactive if inputs are consistently negative.) '
+(3. Leaky ReLU: f\(x\) = max\(0.01x, x\). Solves the Dying ReLU problem by maintaining a small non-zero slope for negative inputs.) '
+(4. Softmax: Used in multiclass classification at the output layer to convert logits into a normalized probability distribution that sums to 1.0.) '
+ET
+endstream
+endobj
+9 0 obj
+<< /Length 1018 >>
+stream
+BT
+/F1 12 Tf
+50 740 Td
+16 TL
+(Chapter 3: Optimization and Backpropagation) '
+(Training a neural network involves finding the optimal weights that minimize the objective loss function.) '
+(1. Gradient Descent: An iterative optimization algorithm. In standard Batch Gradient Descent, weights are updated using all training examples. Stochastic Gradient Descent \(SGD\) updates weights using a single example at a time, resulting in faster but noisier updates. Mini-batch Gradient Descent balances both approaches.) '
+(2. Learning Rate \(alpha\): Hyperparameter determining step size toward the minimum. Too small causes slow convergence; too large causes oscillations or divergence.) '
+(3. Adam Optimizer: Combines AdaGrad and RMSProp with momentum, maintaining exponentially decaying averages of past gradients and squared gradients.) '
+(4. Backpropagation: Uses the chain rule of calculus to compute the partial derivative of the loss with respect to each parameter layer-by-layer backwards from output to input.) '
+ET
+endstream
+endobj
+10 0 obj
+<< /Length 1066 >>
+stream
+BT
+/F1 12 Tf
+50 740 Td
+16 TL
+(Chapter 4: Generalization, Bias-Variance Tradeoff, and Overfitting) '
+(A machine learning model must perform well on unseen test data, not just memorize training samples.) '
+(1. Bias vs. Variance:) '
+(   - High Bias \(Underfitting\): Model is overly simplistic and cannot capture underlying data patterns. Training and test error are both high.) '
+(   - High Variance \(Overfitting\): Model fits noise in training data. Training error is very low, but test error is high.) '
+(2. Regularization Techniques:) '
+(   - L2 Regularization \(Ridge / Weight Decay\): Adds sum of squared weights to the loss function. Shrinks weights smoothly toward zero.) '
+(   - L1 Regularization \(Lasso\): Adds sum of absolute weights. Encourages sparsity by driving unimportant weights to exactly zero.) '
+(   - Dropout: Randomly deactivates a fraction p of neurons during each training forward pass, preventing co-adaptation.) '
+(   - Early Stopping: Halts training when validation loss stops improving to prevent over-optimization on training data.) '
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000133 00000 n 
+0000000260 00000 n 
+0000000387 00000 n 
+0000000514 00000 n 
+0000000642 00000 n 
+0000001663 00000 n 
+0000002698 00000 n 
+0000003768 00000 n 
+0000004887 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+4958
+%%EOF

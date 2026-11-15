@@ -30,11 +30,15 @@ MAX_FLASHCARD_CHUNKS = 40
 def validate_config() -> bool:
     """Validates required environment configuration."""
     if not GOOGLE_API_KEY:
-        st.error("❌ GOOGLE_API_KEY not found.")
-        st.info(
-            "Create a .env file in the project root folder with:\n\n"
-            "GOOGLE_API_KEY=your_api_key_here"
-        )
-        st.stop()
+        try:
+            import streamlit as st
+            st.error("❌ GOOGLE_API_KEY not found.")
+            st.info(
+                "Create a .env file in the project root folder with:\n\n"
+                "GOOGLE_API_KEY=your_api_key_here"
+            )
+            st.stop()
+        except Exception:
+            pass
         return False
     return True
